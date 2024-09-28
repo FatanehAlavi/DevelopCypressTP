@@ -29,8 +29,7 @@ describe('Login Test', () => {
 
         cy.get("div[role='alert'] div:nth-child(2)").should('have.text','رمز عبور با موفقیت تغییر کرد.');
 
-        
-        
+
     
 
 

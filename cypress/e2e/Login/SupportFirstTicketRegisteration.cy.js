@@ -20,7 +20,7 @@ describe('Login Test', () => {
         cy.get('.css-19bb58m').as('dropdown');
         cy.get('@dropdown').click();
         cy.get('#react-select-3-option-0').as('firstOption');
-        cy.get('@firstOption').click();
+        cy.get('@firstOption').click();asdasd
         let ticketdesc = 'DescriptionTest'
         cy.get('textarea').type(ticketdesc)
         //cy.get('div > input[type=file]').scrollIntoView()

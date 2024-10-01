@@ -58,6 +58,7 @@ describe('Login Test', () => {
 
     const gregorianDateBegin = dayjs(beginDataValue, 'ddd MMM DD YYYY HH:mm:ss [GMT]ZZ (z)').format('YYYY-MM-DD');
     jalaaliDateBegin = convertToJalaali(gregorianDateBegin);
+    jalaaliDateBegin = dayjs(jalaaliDateBegin).format('YYYY/MM/D');
     cy.wrap(jalaaliDateBegin).as('jalaaliDateBegin');
 
     cy.get('[aria-rowindex="2"] > [aria-colindex="4"] > .text-inherit').click()
@@ -66,6 +67,7 @@ describe('Login Test', () => {
      console.log('End Date:', endDataValue);
      const gregorianDateEnd = dayjs(endDataValue, 'ddd MMM DD YYYY HH:mm:ss [GMT]ZZ (z)').format('YYYY-MM-DD');
      jalaaliDateEnd = convertToJalaali(gregorianDateEnd);
+     jalaaliDateEnd = dayjs(jalaaliDateEnd).format('YYYY/MM/D');
      cy.wrap(jalaaliDateEnd).as('jalaaliDateEnd');
 
     cy.get("input[type=checkbox]").check(['buy', 'sell'])

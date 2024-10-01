@@ -8,6 +8,15 @@ importers:
 
   .:
     dependencies:
+      dayjs:
+        specifier: ^1.11.13
+        version: 1.11.13
+      jalaali-js:
+        specifier: ^1.2.7
+        version: 1.2.7
+      persian-date:
+        specifier: ^1.1.0
+        version: 1.1.0
       pnpm:
         specifier: ^9.11.0
         version: 9.11.0
@@ -381,6 +390,9 @@ packages:
   isstream@0.1.2:
     resolution: {integrity: sha512-Yljz7ffyPbrLpLngrMtZ7NduUgVvi6wG9RJ9IUcyCd59YQ911PBJphODUcbOVbqYfxe1wuYf/LJ8PauMRwsM/g==}
 
+  jalaali-js@1.2.7:
+    resolution: {integrity: sha512-gE+YHWSbygYAoJa+Xg8LWxGILqFOxZSBQQw39ghel01fVFUxV7bjL0x1JFsHcLQ3uPjvn81HQMa+kxwyPWnxGQ==}
+
   jsbn@0.1.1:
     resolution: {integrity: sha512-UVU9dibq2JcFWxQPA6KCqj5O42VOmAY3zQUfEKxU0KpTGXwNoCjkX1e13eHNvw/xPynt6pU0rZ1htjWTNTSXsg==}
 
@@ -476,6 +488,9 @@ packages:
 
   performance-now@2.1.0:
     resolution: {integrity: sha512-7EAHlyLHI56VEIdK57uwHdHKIaAGbnXPiw0yWbarQZOKaKpvUIgW0jWRVLiatnM+XXlSwsanIBH/hzGMJulMow==}
+
+  persian-date@1.1.0:
+    resolution: {integrity: sha512-YwV3703jLTTJFFQfP3RvMfvKZc5Z1yE++Deywox+hkVLuVN81VsTaZFma9k5P9SgfSUvXjiylbQVuf4YYLGOow==}
 
   pify@2.3.0:
     resolution: {integrity: sha512-udgsAY+fTnvv7kI7aaxbqwWNb0AHiB0qBO89PZKPkoTmGOgdbrHDKD+0B2X4uTfJ/FT1R09r9gTsjUjNJotuog==}
@@ -1066,6 +1081,8 @@ snapshots:
 
   isstream@0.1.2: {}
 
+  jalaali-js@1.2.7: {}
+
   jsbn@0.1.1: {}
 
   json-schema@0.4.0: {}
@@ -1155,6 +1172,8 @@ snapshots:
   pend@1.2.0: {}
 
   performance-now@2.1.0: {}
+
+  persian-date@1.1.0: {}
 
   pify@2.3.0: {}
 

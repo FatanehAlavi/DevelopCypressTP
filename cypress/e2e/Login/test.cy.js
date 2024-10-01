@@ -1,5 +1,5 @@
 
-describe("Login", () => {
+/*describe("Login", () => {
   it("Login", () => {
    // cy.viewport(1920,1000)
     cy.visit('https://myaccount.faraswap.icu');
@@ -35,4 +35,26 @@ describe("Login", () => {
 
  / })
  */
+
+// Import the necessary libraries
+const { PersianDate } = require('persian-date');
+
+describe('Date Display Test', () => {
+  it('Displays the current date in Gregorian and Persian calendars', () => {
+    const now = new Date();
+    const persianDate = new PersianDate(now);
+
+    // Display the current date using the Gregorian and Persian calendars
+    cy.log(`Today in the Gregorian Calendar: ${now.toDateString()}`);
+    cy.log(`Today in the Persian Calendar: ${persianDate.format('dddd, YYYY/MM/DD HH:mm:ss')}`);
+  });
+
+  it('Displays a specific date in Gregorian and Persian calendars', () => {
+    const specificDate = new Date(2013, 4, 28, 10, 35, 0); // Note: Months are 0-indexed in JavaScript
+    const persianDate = new PersianDate(specificDate);
+
+    // Display the specific date using the Gregorian and Persian calendars
+    cy.log(`Gregorian Calendar: ${specificDate.toDateString()}`);
+    cy.log(`Persian Calendar: ${persianDate.format('dddd, YYYY/MM/DD HH:mm:ss')}`);
+  });
 });

@@ -1,6 +1,24 @@
 import dayjs from 'dayjs';
 const { current_pass } = require("../../support/constants/routes");
 const jalaali = require('jalaali-js');
+const englishToPersianMap = {
+  '0': '۰',
+  '1': '۱',
+  '2': '۲',
+  '3': '۳',
+  '4': '۴',
+  '5': '۵',
+  '6': '۶',
+  '7': '۷',
+  '8': '۸',
+  '9': '۹'
+};
+//Function to convert english numbers to persian
+function convertEnglishtoPersian(number){
+   
+    return number.toString().split('').map(digit => englishToPersianMap[digit] || digit).join('');
+  }
+
 
 // Function to convert Gregorian date to Jalaali date
 function convertToJalaali(gregorianDate) {
@@ -73,8 +91,13 @@ describe('Login Test', () => {
     /* let SelectedPeriodTime = cy.dataCy ("tag-close").text()
      expect(CompareDattaBuild).to.deep.equal(SelectedPeriodTime)
     */
+     const jalaaliDateBeginP = convertEnglishtoPersian(jalaaliDateBegin);
+     cy.log(jalaaliDateBeginP);
+     const jalaaliDateEndP = convertEnglishtoPersian(jalaaliDateEnd);
+     cy.log(jalaaliDateEndP);
+
     const symbol = '-';
-    const CompareDateBuild = jalaaliDateBegin.concat(symbol, jalaaliDateEnd);
+    const CompareDateBuild = `${jalaaliDateBeginP} - ${jalaaliDateEndP}`;
     cy.get('.justify-center > [data-cy="filter-tag-wrapper"] > :nth-child(3)').invoke('text').then((text) => {
       expect(text.trim()).contain(CompareDateBuild)
     });

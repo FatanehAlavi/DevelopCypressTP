@@ -1,8 +1,8 @@
 const {current_pass} = require("../../support/constants/routes");
 //const ticketdesc = "DescriptionTest"
 
-describe('Login Test', () => {
-    it('should log in successfully', () => {
+describe('Register  support ticket', () => {
+    it('should register successfully', () => {
         cy.viewport(1920,1000);
         //current_pass == "Aaab@123456"
         cy.myAccountLogin('09104041465', current_pass);

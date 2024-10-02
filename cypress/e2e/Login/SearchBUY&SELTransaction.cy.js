@@ -28,8 +28,8 @@ function convertToJalaali(gregorianDate) {
 }
 
 
-describe('Login Test', () => {
-  it('should log in successfully', async () => {
+describe('SEARCH BUY and SELL Transaction', () => {
+  it('should search successfully', async () => {
     cy.viewport(1920, 1000);
     //current_pass == "Aaab@123456"
     cy.myAccountLogin('09104041465', current_pass);
@@ -39,8 +39,8 @@ describe('Login Test', () => {
 
     cy.dataCy("links:transactions").click();
     cy.wait(3000);
-    cy.dataCy("transaction-open-modal-handler").click()
-    cy.wait(2000)
+    cy.dataCy("transaction-open-modal-handler").click();
+    cy.wait(2000);
     //cy.wait(1000)
     // cy.dataCy("buy-checkbox").should("not.be.checked")
     //cy.dataCy("buy-checkbox").check()
@@ -61,7 +61,7 @@ describe('Login Test', () => {
     jalaaliDateBegin = dayjs(jalaaliDateBegin).format('YYYY/MM/D');
     cy.wrap(jalaaliDateBegin).as('jalaaliDateBegin');
 
-    cy.get('[aria-rowindex="2"] > [aria-colindex="4"] > .text-inherit').click()
+    cy.get('[aria-rowindex="2"] > [aria-colindex="4"] > .text-inherit').click();
     const endDataValue = await cy.get('[aria-rowindex="2"] > [aria-colindex="4"] > .text-inherit').invoke('attr', 'data-value');
      // Use endDate here
      console.log('End Date:', endDataValue);
@@ -70,9 +70,9 @@ describe('Login Test', () => {
      jalaaliDateEnd = dayjs(jalaaliDateEnd).format('YYYY/MM/D');
      cy.wrap(jalaaliDateEnd).as('jalaaliDateEnd');
 
-    cy.get("input[type=checkbox]").check(['buy', 'sell'])
+    cy.get("input[type=checkbox]").check(['buy', 'sell']);
     // })
-    cy.dataCy("confirm-modal-btn").click()
+    cy.dataCy("confirm-modal-btn").click();
     // cy.dataCy("transaction-card-wrapper").dataCy("withdraw_rial-icon").within( function() {
     /*cy.dataCy("transaction-card-wrapper").within( function() {
  
@@ -88,7 +88,7 @@ describe('Login Test', () => {
 
     cy.dataCy('transaction-card-wrapper').get('.p-1').then(($indicators) => {
       const TypeIcon = $indicators.get().map((i) => i.getAttribute('data-cy'));
-      expect(TypeIcon).not.to.deep.equal(['swap-icon', 'withdraw_rial-icon', 'deposit_rial-icon', 'deposit_rial-icon', 'deposit_currency-icon', 'withdraw_currency-icon'])
+      expect(TypeIcon).not.to.deep.equal(['swap-icon', 'withdraw_rial-icon', 'deposit_rial-icon', 'deposit_rial-icon', 'deposit_currency-icon', 'withdraw_currency-icon']);
     });
     /* let SelectedPeriodTime = cy.dataCy ("tag-close").text()
      expect(CompareDattaBuild).to.deep.equal(SelectedPeriodTime)

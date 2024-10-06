@@ -44,7 +44,7 @@ Cypress.Commands.add('waitUserDataLoaded', () => {
         method: "GET",
         url: `${API_AUTH_BASE_URL}/users/myaccount/user-info/`,
     }).as("getUserInfo");
-    cy.wait('@getUserInfo', { timeout: 20000 }).its('response').then((response) => {
+    cy.wait('@getUserInfo', { timeout: 10000 }).its('response').then((response) => {
         expect(response?.statusCode).to.eq(200);
         expect(response?.body).to.have.property('username');
         cy.log(JSON.stringify(response?.body));
@@ -52,3 +52,22 @@ Cypress.Commands.add('waitUserDataLoaded', () => {
     });
 
 });
+
+
+
+
+Cypress.Commands.add('waitNextLoaded', () => {
+
+    cy.intercept({
+        method: "GET",
+        url: `https://myaccount.faraswap.icu/_next/data/WCcf2rH4n9RS_0D1Bu_OD/fa/change.json`,
+    }).as("getTradeInfo");
+    cy.wait('@getTradeInfo', { timeout: 20000 }).its('response').then((response) => {
+        expect(response?.statusCode).to.eq(200);
+        expect(response?.body).to.have.property('required_deposit');
+        cy.log(JSON.stringify(response?.body));
+        cy.log('Trade data has successfully loaded');
+    });
+
+});
+

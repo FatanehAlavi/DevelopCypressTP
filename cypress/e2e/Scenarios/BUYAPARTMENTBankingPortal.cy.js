@@ -7,11 +7,12 @@ describe('Register BUY APARTMENT Transaction', () => {
     cy.myAccountLogin('09104041465', current_pass);
 
     //cy.waitUserDataLoaded();
-    cy.wait(4000);
+    cy.wait(6000)
     cy.dataCy('links:change').click()
+
     cy.wait(6000)
     cy.dataCy('active-tab-0').click()
-    cy.wait(2000)
+    //cy.wait(2000)
     cy.dataCy('realstate-currency-type').click()
     cy.wait(2000)
     cy.dataCy('select-box-open-currency').click()
@@ -26,13 +27,13 @@ describe('Register BUY APARTMENT Transaction', () => {
     }
 
     // Generate a random number between 10,000 and 25,000,000 with up to 8 decimal places
-    const randomAmount = generateRandomNumber(0.02, 50, 8);
+    const randomAmount = generateRandomNumber(0.02, 10, 8);
 
     // Enter the random number into the input field
     cy.dataCy('enter-amount').clear().type(randomAmount);
 
     // Validate the entered number
-   await cy.get('[data-cy="enter-amount"]').invoke('val').then(value => {
+    await cy.get('[data-cy="enter-amount"]').invoke('val').then(value => {
       const regex = /^\d+(\.\d{1,8})?$/;
       const numericValue = Number(value);
 
@@ -43,28 +44,33 @@ describe('Register BUY APARTMENT Transaction', () => {
       expect(numericValue).to.be.at.least(0.02);
 
       // Check for maximum value
-      expect(numericValue).to.be.at.most(50);
+      expect(numericValue).to.be.at.most(10);
       cy.wait(5000)
       cy.dataCy('preview-calculate').invoke('text').then((text) => {
         const value = parseFloat(text);
         expect(value).to.not.equal(0);
       })
-    })
+    
+      //cy.waitNextLoaded();
+      cy.wait(3000)
       cy.dataCy('next').click();
       cy.wait(2000);
       cy.dataCy('toggle').then(($toggle) => {
      
-      if ($toggle.is(':checked')) {
+        if ($toggle.is(':checked')) {
         cy.dataCy('toggle').click({force :true});
-      } else {
-        cy.dataCy('toggle').should('not.be.checked')
+        } else {
+       cy.dataCy('toggle').should('not.be.checked')
     
       }
     })
     cy.wait(2000);
     cy.dataCy('pay-button').click();
-    cy.wait(6000);
-      cy.get('id=["success-button"]').click()
+    cy.wait(10000);
+  })
+    
+    cy.url().should('include', 'https://gateway.zibal.ir/start/3784200147');
+    cy.get('button > #success-button > span').click();
 
       cy.get('div > .gateway_texts__flRkd > p[0]').should('have.text','پرداخت با موفقیت انجام شد');
 

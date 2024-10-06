@@ -4,3 +4,4 @@ export const API_ACCOUNTING_BASE_URL = 'https://myaccount.faraswap.icu/api/accou
 export const MYACCOUNT_BASE_URL = 'https://myaccount.faraswap.icu';
 export const MYACCOUNT_LOGIN_URL = 'https://myaccount.faraswap.icu/login';
 export const  current_pass ='Aaab@123456'
+export const BankPayBUy = 'https://gateway.zibal.ir/start/3784200147'

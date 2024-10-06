@@ -31,7 +31,7 @@ cy.get(':nth-child(6) > .bg-black-100 > .Table_body__b1GN4 > :nth-child(1) > [st
   // You can also perform further actions with the array here
 });
 */
-debugger;
+
 cy.dataCy('links:change').click();
 cy.wait(6000)
 cy.dataCy('active-tab-1').click()
@@ -57,7 +57,7 @@ function generateRandomNumber(min, max, decimalPlaces) {
   await cy.get('[data-cy="enter-amount"]').invoke('val').then(value => {
     const regex = /^\d+(\.\d{1,8})?$/;
     const numericValue = Number(value);
-debugger;
+
     // Check for maximum 8 decimal places
     expect(value).to.match(regex);
 
@@ -72,14 +72,15 @@ debugger;
       const value = parseFloat(text);
       expect(value).to.not.equal(0);
     })
-   debugger;
+   
     cy.dataCy('preview-calculate').invoke('text').then((PreviewCalc) => {
 
 
     cy.dataCy('submit').click();
     cy.wait(5000)
     cy.get("p[class='Text_base__e_8ut text- text-[#9a9a9a] font-medium']", { timeout: 10000 }).invoke('text').then((TextValue) => {
-        expect (TextValue).contains(PreviewCalc);
+        const TextValue1 = TextValue.replace(/\s+/g, '')
+        expect (TextValue1).contains(PreviewCalc);
 
     })
         

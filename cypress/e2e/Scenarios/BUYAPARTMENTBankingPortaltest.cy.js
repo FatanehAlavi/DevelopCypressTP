@@ -9,7 +9,7 @@ describe('Register BUY APARTMENT Transaction', () => {
     //cy.waitUserDataLoaded();
     cy.wait(6000)
     cy.dataCy('links:change').click()
-
+debugger;
     cy.wait(6000)
     cy.dataCy('active-tab-0').click()
     //cy.wait(2000)
@@ -50,7 +50,6 @@ describe('Register BUY APARTMENT Transaction', () => {
         const value = parseFloat(text);
         expect(value).to.not.equal(0);
       })
-    
       //cy.waitNextLoaded();
       cy.wait(3000)
       cy.dataCy('next').click();

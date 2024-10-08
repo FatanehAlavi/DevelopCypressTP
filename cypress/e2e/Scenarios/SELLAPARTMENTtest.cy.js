@@ -6,31 +6,24 @@ describe('Register BUY APARTMENT Transaction', () => {
     //current_pass == "Aaab@123456"
     cy.myAccountLogin('09104041465', current_pass);
     cy.wait(8000)
-    /*cy.dataCy('links:wallet').click();
+    cy.dataCy('links:wallet').click();
     cy.wait(2000)
-    cy.get(':nth-child(6) > .bg-black-100 > .Table_headText__g_IxT > .Text_twenty__48SNL').should('have.to','آپارتمان مسکونی').then()
-    cy.get(':nth-child(6) > .bg-black-100 > .Table_body__b1GN4 > :nth-child(1) > [style="width: 240px;"] > .CoinNameBadge_wrapper__w8tKv > :nth-child(2) > .Text_xm__PheHY').then(($list){
 
+    const baseSelector = 'div:nth-child(6) div:nth-child(1) div:nth-child(3)';
+    const financialwallet = [];
 
+    for (let i = 1; i <= 3; i++) {
+      const selector = `${baseSelector} div:nth-child(${i}) div:nth-child(1) div:nth-child(1) div:nth-child(2) p:nth-child(1)`;
+      cy.get(selector).invoke('text').then(text => {
+        financialwallet.push(text);
+      });
+    }
 
-    })
+    cy.wrap(financialwallet).should('have.length', 3).then(() => {
+      cy.log('Collected financialwallet:', financialwallet);
+    });
 
-// Define an empty array to store the attribute values
-let attributeValues = [];
-const firstvalue = cy.get(':nth-child(6) > .bg-black-100 > .Table_body__b1GN4 > :nth-child(1) > [style="width: 240px;"] > .CoinNameBadge_wrapper__w8tKv > :nth-child(2) > .Text_xm__PheHY')
-// Get the elements and extract the attribute values
-cy.get(':nth-child(6) > .bg-black-100 > .Table_body__b1GN4 > :nth-child(1) > [style="width: 240px;"] > .CoinNameBadge_wrapper__w8tKv > :nth-child(2) > .Text_xm__PheHY').each(($el) => {
-  // Get the attribute value
-  cy.wrap($el).invoke('attr', '').then((attrValue) => {
-    // Push the attribute value to the array
-    attributeValues.push(attrValue);
-  });
-}).then(() => {
-  // Log the array to the console
-  cy.log(attributeValues);
-  // You can also perform further actions with the array here
-});
-*/
+   
 
 cy.dataCy('links:change').click();
 cy.wait(6000)
@@ -38,6 +31,24 @@ cy.dataCy('active-tab-1').click()
 cy.wait(6000)
 cy.dataCy('realstate-currency-type').click()
 cy.dataCy('select-box-open-assets').click()
+
+
+
+    const Assetdisplay = [];
+
+    for (let i = 1; i <= 3; i++) {
+      const selector = cy.dataCy(`[data-cy="option-selected-${i}"]`);
+      cy.get(selector).invoke('text').then(text => {
+        Assetdisplay.push(text);
+      });
+    }
+ 
+    cy.wrap(Assetdisplay).should('have.length', 3).then(() => {
+      cy.log('Collected Assetdisplay:', Assetdisplay);
+    });
+    
+    expect(financialwallet).to.deep.equal(Assetdisplay);
+
 cy.dataCy('option-selected-0').click()
 
 //cy.dataCy('sale-total-inventory-button').click()

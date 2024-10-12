@@ -83,14 +83,16 @@ debugger;
     cy.get('button[id="success-button"] span').click();
 });
 cy.wait(8000)
-cy.window().then((win) => {
+/*cy.window().then((win) => {
         cy.stub(win, 'open').as('windowOpen').callsFake((url) => {
           // Open the URL in the same tab
           cy.visit(url);
         });
       });
+      */
     // Validate successful payment message
-    cy.origin('https://myaccount.faraswap.icu/gateway-callback-accept?transaction_id=815', () => {
+    const url= 'https://myaccount.faraswap.icu/gateway-callback-accept?transaction_id=815'
+    cy.origin(url , () => {
 
         cy.dataCy('payment-status-text').eq(0).should('have.text', 'پرداخت با موفقیت انجام شد');
 
